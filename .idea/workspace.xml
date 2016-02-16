@@ -2,33 +2,9 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="17a56163-c74e-452a-a27b-2a48bfb39e76" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/.name" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/encodings.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/goodStories.iml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/jsLibraryMappings.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/misc.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/modules.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/vcs.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/watcherTasks.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/package.json" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/webpack.config.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/wwwroot/dist/index.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/wwwroot/js/actionCreators/actionCreators.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/wwwroot/js/components/addQuilt.jsx" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/wwwroot/js/components/app.jsx" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/wwwroot/js/components/blog.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/wwwroot/js/components/intlProvider.jsx" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/wwwroot/js/components/langLink.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/wwwroot/js/components/languages.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/wwwroot/js/components/localized.jsx" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/wwwroot/js/components/main.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/wwwroot/js/components/quiltList.jsx" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/wwwroot/js/main.jsx" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/wwwroot/js/reducers/reducers.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/wwwroot/js/renderingManager.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/wwwroot/js/utils/utils.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/wwwroot/scss/main.scss" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.gitignore" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/goodStories.iml" afterPath="$PROJECT_DIR$/.idea/goodStories.iml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <ignored path="goodStories.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -62,8 +38,8 @@
       <file leaf-file-name="webpack.config.js" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/webpack.config.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.13222222">
-              <caret line="7" column="4" selection-start-line="7" selection-start-column="4" selection-end-line="7" selection-end-column="4" />
+            <state vertical-scroll-proportion="0.075555556">
+              <caret line="4" column="11" selection-start-line="4" selection-start-column="11" selection-end-line="4" selection-end-column="11" />
               <folding />
             </state>
           </provider>
@@ -275,7 +251,7 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="9" y="0" width="1246" height="1038" extended-state="1" />
-    <editor active="false" />
+    <editor active="true" />
     <layout>
       <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.2495935" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
@@ -457,8 +433,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/webpack.config.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.13222222">
-          <caret line="7" column="4" selection-start-line="7" selection-start-column="4" selection-end-line="7" selection-end-column="4" />
+        <state vertical-scroll-proportion="0.075555556">
+          <caret line="4" column="11" selection-start-line="4" selection-start-column="11" selection-end-line="4" selection-end-column="11" />
           <folding />
         </state>
       </provider>
