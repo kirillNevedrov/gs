@@ -12,6 +12,7 @@ module.exports = {
     contentBase: './wwwroot/dist',
     historyApiFallback: true
   },
+  devtool: 'source-map',
   module: {
     loaders: [
       {

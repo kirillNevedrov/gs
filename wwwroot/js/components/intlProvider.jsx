@@ -29,13 +29,13 @@ export default ({locale, children}) => {
     );
 };
 
-//const mapStateToIntlProviderProps = (state) => {
-//    return {
-//        locale: state.locale,
-//        messages: getMessages(state.locale),
-//        //key: state.locale
-//    };
-//};
+const mapStateToIntlProviderProps = (state) => {
+    return {
+        locale: state.locale,
+        messages: getMessages(state.locale),
+        //key: state.locale
+    };
+};
 //
 //export default connect(
 //    mapStateToIntlProviderProps

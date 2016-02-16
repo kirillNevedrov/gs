@@ -7,10 +7,11 @@ import {setLocale} from 'js/actionCreators/actionCreators';
 import {isDefaultLocale} from 'js/utils/utils';
 
 class Languages extends React.Component {
-    //shouldComponentUpdate(nextProps, nextState) {
-    //    return false;
-    //}
+    shouldComponentUpdate(nextProps, nextState) {
+        return false;
+    }
     componentDidMount() {
+        console.log("mount");
     }
     getNewPath(currentPath, currentLocale, newLocale){
         if(isDefaultLocale(currentLocale)){

@@ -11,8 +11,6 @@ import reducers from './reducers/reducers';
 import App from './components/app';
 import Main from './components/main';
 import Blog from './components/blog';
-import IntlProvider from './components/intlProvider';
-import {RenderingManager} from './renderingManager';
 
 // Sync dispatched route actions to the history
 const reduxRouterMiddleware = syncHistory(browserHistory)
@@ -20,27 +18,16 @@ const createStoreWithMiddleware = applyMiddleware(reduxRouterMiddleware)(createS
 
 const store = createStoreWithMiddleware(reducers)
 
-const render = (locale) => {
-    ReactDOM.unmountComponentAtNode(document.getElementById('root'));
-    ReactDOM.render(
-        <Provider store={store}>
-            <IntlProvider locale={locale}>
-                <Router history={browserHistory}>
-                    <Route path="/(ru)(en)" component={App}>
-                        <IndexRoute component={Main}/>
-                        <Route path="blog" component={Blog}/>
-                    </Route>
-                </Router>
-            </IntlProvider>
-        </Provider>,
-        document.getElementById('root')
-    );
-};
-
-const renderingManager = new RenderingManager({
-    render,
-    store
-});
-
-renderingManager.render();
+ReactDOM.render(
+    <Provider store={store}>
+        <Router history={browserHistory}>
+            <Route path="/(ru)(en)" component={App}>
+                <IndexRoute component={Main}/>
+                <Route path="quilts" component={Main}/>
+                <Route path="blog" component={Blog}/>
+            </Route>
+        </Router>
+    </Provider>,
+    document.getElementById('root')
+);
 

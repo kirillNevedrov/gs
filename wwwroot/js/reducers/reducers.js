@@ -25,20 +25,11 @@ const quilts = (state = [], action) => {
             return state;
     }
 };
-//
-//const locale = (state = 'ru', action) => {
-//    switch (action.type) {
-//        case 'SET_LOCALE':
-//            return action.locale;
-//        default:
-//            return state;
-//    }
-//};
+
 
 const app = combineReducers({
     routing: routeReducer,
-    quilts,
-    //locale
+    quilts
 });
 
 export default app;
