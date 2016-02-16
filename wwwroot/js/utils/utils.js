@@ -5,11 +5,15 @@ const getLocale = (location) => {
         ? location.pathname.match(/\/(ru|en)/)
         : null;
 
-    return match ? match[1] : defaultLocale;
+    return match ? match[1] : '';
+};
+
+const getLocaleOrDefault = (locale) => {
+    return locale ? locale : defaultLocale;
 };
 
 const isDefaultLocale = (locale) => {
     return locale === defaultLocale;
 };
 
-export {getLocale, isDefaultLocale};
+export {defaultLocale, getLocale, getLocaleOrDefault, isDefaultLocale};

@@ -2,10 +2,11 @@ import React from 'react';
 import {IntlProvider} from 'react-intl';
 import {connect} from 'react-redux';
 
-import LangLink from './langLink'
+import CurrentLocaleLink from './currentLocaleLink'
 import Languages from './languages';
 import Localized from './localized';
-import {getLocale} from 'js/utils/utils';
+import LocalizedBinded from './localizedBinded';
+import {getLocale, getLocaleOrDefault} from 'js/utils/utils';
 
 const ruStrings = {
     'description': 'Гуд сториес это огонь!'
@@ -37,17 +38,20 @@ export class App extends React.Component {
     //    return false;
     //}
     render() {
-        var {locale, params} = this.props;
+        let {location} = this.props;
+        let locale = getLocale(location);
+        let localeOrDefault = getLocaleOrDefault(locale);
 
         return (
-            <IntlProvider key={locale} locale={locale} messages={getMessages(locale)}>
+            <IntlProvider key={localeOrDefault} locale={locale} messages={getMessages(localeOrDefault)}>
                 <div>
+                    {location.pathname}
                     <header>Good Stories</header>
                     <nav>
                         <ul>
-                            <li><LangLink to="/">Главная</LangLink></li>
-                            <li><LangLink to="/quilts">Одеяла</LangLink></li>
-                            <li><LangLink to="/blog">Блог</LangLink></li>
+                            <li><CurrentLocaleLink to="/">Главная</CurrentLocaleLink></li>
+                            <li><CurrentLocaleLink to="/quilts">Одеяла</CurrentLocaleLink></li>
+                            <li><CurrentLocaleLink to="/blog">Блог</CurrentLocaleLink></li>
                         </ul>
                     </nav>
                     <main>
@@ -55,7 +59,8 @@ export class App extends React.Component {
                     </main>
                     <footer>
                         <Localized />
-                        <Languages loc={locale}/>
+                        <LocalizedBinded />
+                        <Languages />
                     </footer>
                 </div>
             </IntlProvider>
@@ -65,7 +70,7 @@ export class App extends React.Component {
 
 const mapStateToAppProps = (state) => {
     return {
-        locale: getLocale(state.routing.location)
+        location: state.routing.location
     };
 };
 

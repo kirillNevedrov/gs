@@ -1,55 +1,36 @@
 import React from 'react';
 import {connect} from 'react-redux';
-import {injectIntl} from 'react-intl';
+
 import { Link } from 'react-router'
 
 import {setLocale} from 'js/actionCreators/actionCreators';
-import {isDefaultLocale} from 'js/utils/utils';
+import {getLocale, getLocaleOrDefault} from 'js/utils/utils';
 
 class Languages extends React.Component {
-    shouldComponentUpdate(nextProps, nextState) {
-        return false;
-    }
+    //shouldComponentUpdate(nextProps, nextState) {
+    //    return false;
+    //}
     componentDidMount() {
         console.log("mount");
     }
     getNewPath(currentPath, currentLocale, newLocale){
-        if(isDefaultLocale(currentLocale)){
-            if(isDefaultLocale(newLocale))
-            {
-                return currentPath;
-            }
-            else {
-                return '/' + newLocale + (currentPath === '/' ? '' : currentPath);
-            }
-        }
-        else{
-            if(isDefaultLocale(newLocale))
-            {
-                var newPath = currentPath.replace('/' + currentLocale, '');
-                return newPath ? newPath : '/';
-            }
-            else {
-                return currentPath.replace('/' + currentLocale, '/' + newLocale);
-            }
-        }
+        return currentPath.replace(
+            new RegExp('/' + currentLocale + '(/)?(.*)'),
+            '/' + newLocale + '/$2');
     }
     render() {
-        const {formatMessage, locale} = this.props.intl;
-        const {path, dispatch} = this.props;
+        const {location} = this.props;
+        let locale = getLocale(location);
+        let localeOrDefault = getLocaleOrDefault(locale);
 
         var getLink = (linkLocale) => {
-            return linkLocale === locale
+            return linkLocale === localeOrDefault
                 ? <span>{linkLocale}</span>
-                : <Link to={this.getNewPath(path, locale, linkLocale)}>{linkLocale}</Link>
+                : <Link to={this.getNewPath(location.pathname, locale, linkLocale)}>{linkLocale}</Link>
         };
-
-        var formattedMessage = formatMessage({id: 'description'});
 
         return (
             <div>
-                {path}
-                {formattedMessage}
                 {getLink('ru')}
                 |
                 {getLink('en')}
@@ -60,8 +41,10 @@ class Languages extends React.Component {
 
 const mapStateToLanguagesProps = (state) => {
     return {
-        path: state.routing.location.pathname
+        location: state.routing.location
     };
 };
 
-export default injectIntl(connect(mapStateToLanguagesProps)(Languages));
+export default connect(
+    mapStateToLanguagesProps
+)(Languages);
