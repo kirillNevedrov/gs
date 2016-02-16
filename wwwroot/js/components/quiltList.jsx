@@ -1,17 +1,22 @@
 import React from 'react';
 import {connect} from 'react-redux';
+import {injectIntl} from 'react-intl';
 
-let QuiltList = ({quilts, children}) => {
+let QuiltList = ({quilts, children, intl: {formatMessage}}) => {
+    let formattedMessage = formatMessage({id: 'description'});
 
     var quilts = quilts.map(
         quilt =>
-        <li key={quilt.id}>
-            {quilt.text}
-        </li>
+            <li key={quilt.id}>
+                {quilt.text}
+            </li>
     );
 
     return (
-        <ul>{quilts}</ul>
+        <div>
+            <div>{formattedMessage}</div>
+            <ul>{quilts}</ul>
+        </div>
     );
 };
 
@@ -21,6 +26,6 @@ const mapStateToQuiltListProps = (state) => {
     };
 };
 
-export default connect(
+export default injectIntl(connect(
     mapStateToQuiltListProps
-)(QuiltList);
+)(QuiltList));
