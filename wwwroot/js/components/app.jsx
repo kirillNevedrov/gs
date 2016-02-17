@@ -1,6 +1,7 @@
 import React from 'react';
 import {IntlProvider} from 'react-intl';
 import {connect} from 'react-redux';
+import ReactCSSTransitionGroup from 'react-addons-css-transition-group'
 
 import CurrentLocaleLink from './currentLocaleLink'
 import Languages from './languages';
@@ -55,7 +56,16 @@ export class App extends React.Component {
                         </ul>
                     </nav>
                     <main>
-                        {this.props.children}
+                        <ReactCSSTransitionGroup
+                            component="div"
+                            transitionName="example"
+                            //transitionEnterTimeout={500}
+                            //transitionLeaveTimeout={500}
+                        >
+                            {React.cloneElement(this.props.children, {
+                                key: this.props.location.pathname
+                                })}
+                        </ReactCSSTransitionGroup>
                     </main>
                     <footer>
                         <Localized />
