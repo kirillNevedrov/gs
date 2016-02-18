@@ -1,22 +1,57 @@
 #root
 {
   background-color: #ffff4f;
+  text-align: center;
 }
 
-.example-enter {
-  opacity: 0;
-  transition: opacity .5s ease-in;
+//.example-enter {
+//  opacity: 0;
+//  transition: opacity 2s ease-in;
+//}
+//
+//.example-enter.example-enter-active {
+//  opacity: 1;
+//}
+//
+//.example-leave {
+//  opacity: 1;
+//  transition: opacity 2s ease-in;
+//}
+//
+//.example-leave.example-leave-active {
+//  opacity: 0;
+//}
+
+@-webkit-keyframes moveToLeft {
+  from { }
+  to { -webkit-transform: translateX(-400px); }
+}
+@keyframes moveToLeft {
+  from { }
+  to { -webkit-transform: translateX(-400px); transform: translateX(-400px); }
 }
 
-.example-enter.example-enter-active {
-  opacity: 1;
+@-webkit-keyframes moveFromRight {
+  from { -webkit-transform: translateX(400px); }
+}
+@keyframes moveFromRight {
+  from { -webkit-transform: translateX(400px); transform: translateX(400px); }
 }
 
 .example-leave {
-  opacity: 1;
-  transition: opacity .5s ease-in;
+  -webkit-animation: moveToLeft 5s ease both;
+  animation: moveToLeft 5s ease both;
 }
 
-.example-leave.example-leave-active {
-  opacity: 0;
+.example-enter {
+  -webkit-animation: moveFromRight 5s ease both;
+  animation: moveFromRight 5s ease both;
+}
+
+main > div{
+  display: inline-block;
+}
+
+main > div > *{
+  float: left;
 }

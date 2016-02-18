@@ -59,8 +59,8 @@ export class App extends React.Component {
                         <ReactCSSTransitionGroup
                             component="div"
                             transitionName="example"
-                            //transitionEnterTimeout={500}
-                            //transitionLeaveTimeout={500}
+                            transitionEnterTimeout={5000}
+                            transitionLeaveTimeout={5000}
                         >
                             {React.cloneElement(this.props.children, {
                                 key: this.props.location.pathname
