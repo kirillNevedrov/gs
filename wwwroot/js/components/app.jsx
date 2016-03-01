@@ -59,8 +59,8 @@ export class App extends React.Component {
                         <ReactCSSTransitionGroup
                             component="div"
                             transitionName="example"
-                            transitionEnterTimeout={5000}
-                            transitionLeaveTimeout={5000}
+                            transitionEnterTimeout={500}
+                            transitionLeaveTimeout={500}
                         >
                             {React.cloneElement(this.props.children, {
                                 key: this.props.location.pathname
@@ -68,9 +68,13 @@ export class App extends React.Component {
                         </ReactCSSTransitionGroup>
                     </main>
                     <footer>
-                        <Localized />
-                        <LocalizedBinded />
-                        <Languages />
+                        <div className="column">
+                            <Localized />
+                            <LocalizedBinded />
+                        </div>
+                        <div className="column">
+                            <Languages />
+                        </div>
                     </footer>
                 </div>
             </IntlProvider>

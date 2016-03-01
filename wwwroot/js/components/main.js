@@ -6,7 +6,7 @@ import QuiltList from './quiltList';
 class Main extends React.Component {
   render() {
     return (
-      <div>
+      <div className="test-bc1">
           <AddQuilt />
           <QuiltList />
       </div>

@@ -1,0 +1,82 @@
+#root
+{
+  background-color: #ffff4f;
+  lost-utility: clearfix;
+}
+
+/*//.example-enter {*/
+  /*//  opacity: 0;*/
+  /*//  transition: opacity 2s ease-in;*/
+  /*//}*/
+/*//*/
+/*//.example-enter.example-enter-active {*/
+  /*//  opacity: 1;*/
+  /*//}*/
+/*//*/
+/*//.example-leave {*/
+  /*//  opacity: 1;*/
+  /*//  transition: opacity 2s ease-in;*/
+  /*//}*/
+/*//*/
+/*//.example-leave.example-leave-active {*/
+  /*//  opacity: 0;*/
+  /*//}*/
+
+@-webkit-keyframes moveToLeft {
+  from { }
+  to { -webkit-transform: translateX(-100%); }
+}
+@keyframes moveToLeft {
+  from { }
+  to { -webkit-transform: translateX(-100%); transform: translateX(-100%); }
+}
+
+@-webkit-keyframes moveFromRight {
+  from { -webkit-transform: translateX(100%); }
+}
+@keyframes moveFromRight {
+  from { -webkit-transform: translateX(100%); transform: translateX(100%); }
+}
+
+.example-leave {
+  -webkit-animation: moveToLeft 0.5s ease both;
+  animation: moveToLeft 0.5s ease both;
+}
+
+.example-enter {
+  -webkit-animation: moveFromRight 0.5s ease both;
+  animation: moveFromRight 0.5s ease both;
+}
+
+main{
+  lost-center: 980px;
+  position: relative;
+  height: 300px;
+  overflow: hidden;
+}
+
+.test-bc1{
+   background-color: #fff;
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 300px;
+  width: 100%;
+ }
+.test-bc2{
+  background-color: #000;
+  color: #fff;
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 300px;
+  width: 100%;
+}
+
+footer {
+  lost-utility: clearfix;
+
+  .column {
+    lost-column: 1/2;
+  }
+}

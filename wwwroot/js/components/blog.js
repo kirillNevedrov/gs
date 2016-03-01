@@ -3,7 +3,7 @@ import React from 'react';
 class Blog extends React.Component {
   render() {
     return (
-        <div>
+        <div className="test-bc2">
           <ul>
             <li>Post #1</li>
             <li>Post #2</li>
