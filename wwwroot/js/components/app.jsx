@@ -41,8 +41,11 @@ export class App extends React.Component {
     //}
     render() {
         let {location, onTransitionStart, onTransitionEnd} = this.props;
+
         let locale = getLocale(location);
         let localeOrDefault = getLocaleOrDefault(locale);
+
+
 
         return (
             //<div>
@@ -74,12 +77,14 @@ export class App extends React.Component {
                         <CSSTransitionGroup
                             component="div"
                             transitionName="example"
+                            transitionAppear={true}
+                            transitionAppearTimeout={500}
                             transitionEnterTimeout={500}
                             transitionLeaveTimeout={500}
-                            onEnterStart = {onTransitionStart}
-                            onEnterEnd = {onTransitionEnd}
-                            onLeaveStart = {onTransitionStart}
-                            onLeaveEnd = {onTransitionEnd}
+                            onEnterStart = {()=>{console.log('enter start');onTransitionStart();}}
+                            onEnterEnd = {()=>{console.log('enter end');onTransitionEnd();}}
+                            onLeaveStart = {()=>{console.log('leave start');onTransitionStart();}}
+                            onLeaveEnd = {()=>{console.log('leave end');onTransitionEnd();}}
                         >
                             {React.cloneElement(this.props.children, {
                                 key: this.props.location.pathname
@@ -101,11 +106,11 @@ export class App extends React.Component {
     }
 }
 
-const mapStateToAppProps = (state) => {
-    return {
-        location: state.routing.location
-    };
-};
+//const mapStateToAppProps = (state) => {
+//    return {
+//        location: state.routing.location
+//    };
+//};
 
 const mapDisapatchToAppProps = (dispatch) => {
     return {
@@ -119,7 +124,7 @@ const mapDisapatchToAppProps = (dispatch) => {
 }
 
 export default connect(
-    mapStateToAppProps,
+    null,//mapStateToAppProps,
     mapDisapatchToAppProps
 )(App);
 
