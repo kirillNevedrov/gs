@@ -1,6 +1,7 @@
 var path = require("path");
 var autoprefixer = require('autoprefixer');
 var precss = require('precss');
+var cssnext = require('postcss-cssnext');
 var lost = require('lost');
 
 module.exports = {

@@ -1,13 +1,14 @@
 import React from 'react';
 import {IntlProvider} from 'react-intl';
 import {connect} from 'react-redux';
-import ReactCSSTransitionGroup from 'react-addons-css-transition-group'
+import CSSTransitionGroup from './transitions/CSSTransitionGroup'
 
 import CurrentLocaleLink from './currentLocaleLink'
 import Languages from './languages';
 import Localized from './localized';
 import LocalizedBinded from './localizedBinded';
 import {getLocale, getLocaleOrDefault} from 'js/utils/utils';
+import {activateTransition, deactivateTransition} from 'js/actionCreators/actionCreators';
 
 const ruStrings = {
     'description': 'Гуд сториес это огонь!'
@@ -39,11 +40,25 @@ export class App extends React.Component {
     //    return false;
     //}
     render() {
-        let {location} = this.props;
+        let {location, onTransitionStart, onTransitionEnd} = this.props;
         let locale = getLocale(location);
         let localeOrDefault = getLocaleOrDefault(locale);
 
         return (
+            //<div>
+            //    <section className="grid-one">
+            //        <div className="grid-item">1</div>
+            //        <div className="grid-item">2</div>
+            //        <div className="grid-item">3</div>
+            //        <div className="grid-item">4</div>
+            //        <div className="grid-item">5</div>
+            //        <div className="grid-item">6</div>
+            //        <div className="grid-item">7</div>
+            //        <div className="grid-item">8</div>
+            //        <div className="grid-item">9</div>
+            //        <div className="grid-item">10</div>
+            //    </section>
+            //</div>
             <IntlProvider key={localeOrDefault} locale={locale} messages={getMessages(localeOrDefault)}>
                 <div>
                     {location.pathname}
@@ -56,16 +71,20 @@ export class App extends React.Component {
                         </ul>
                     </nav>
                     <main>
-                        <ReactCSSTransitionGroup
+                        <CSSTransitionGroup
                             component="div"
                             transitionName="example"
                             transitionEnterTimeout={500}
                             transitionLeaveTimeout={500}
+                            onEnterStart = {onTransitionStart}
+                            onEnterEnd = {onTransitionEnd}
+                            onLeaveStart = {onTransitionStart}
+                            onLeaveEnd = {onTransitionEnd}
                         >
                             {React.cloneElement(this.props.children, {
                                 key: this.props.location.pathname
                                 })}
-                        </ReactCSSTransitionGroup>
+                        </CSSTransitionGroup>
                     </main>
                     <footer>
                         <div className="column">
@@ -88,8 +107,20 @@ const mapStateToAppProps = (state) => {
     };
 };
 
+const mapDisapatchToAppProps = (dispatch) => {
+    return {
+        onTransitionStart: () => {
+            dispatch(activateTransition());
+        },
+        onTransitionEnd: () => {
+            dispatch(deactivateTransition());
+        }
+    };
+}
+
 export default connect(
-    mapStateToAppProps
+    mapStateToAppProps,
+    mapDisapatchToAppProps
 )(App);
 
 //use classnames package

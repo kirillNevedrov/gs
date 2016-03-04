@@ -7,11 +7,16 @@ const addQuilt = (text) => {
     };
 };
 
-//const setLocale = (locale) => {
-//    return {
-//        type: 'SET_LOCALE',
-//        locale
-//    };
-//};
+const activateTransition = () => {
+    return {
+        type: 'ACTIVATE_TRANSITION'
+    };
+};
 
-export {addQuilt};
+const deactivateTransition = () => {
+    return {
+        type: 'DEACTIVATE_TRANSITION'
+    };
+};
+
+export {addQuilt, activateTransition, deactivateTransition};

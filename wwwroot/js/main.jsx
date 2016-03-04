@@ -11,6 +11,7 @@ import reducers from './reducers/reducers';
 import App from './components/app';
 import Main from './components/main';
 import Blog from './components/blog';
+import Quilts from './components/quilts';
 
 // Sync dispatched route actions to the history
 const reduxRouterMiddleware = syncHistory(browserHistory)
@@ -23,7 +24,7 @@ ReactDOM.render(
         <Router history={browserHistory}>
             <Route path="/(ru)(en)" component={App}>
                 <IndexRoute component={Main}/>
-                <Route path="quilts" component={Main}/>
+                <Route path="quilts" component={Quilts}/>
                 <Route path="blog" component={Blog}/>
             </Route>
         </Router>
