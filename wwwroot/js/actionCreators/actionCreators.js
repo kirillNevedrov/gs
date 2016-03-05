@@ -7,16 +7,4 @@ const addQuilt = (text) => {
     };
 };
 
-const activateTransition = () => {
-    return {
-        type: 'ACTIVATE_TRANSITION'
-    };
-};
-
-const deactivateTransition = () => {
-    return {
-        type: 'DEACTIVATE_TRANSITION'
-    };
-};
-
-export {addQuilt, activateTransition, deactivateTransition};
+export {addQuilt};

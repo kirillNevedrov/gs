@@ -26,21 +26,9 @@ const quilts = (state = [], action) => {
     }
 };
 
-const isTransitionActive = (state = false, action) =>{
-    switch (action.type) {
-        case 'ACTIVATE_TRANSITION':
-            return true;
-        case 'DEACTIVATE_TRANSITION':
-            return false;
-        default:
-            return state;
-    }
-}
-
 const app = combineReducers({
     routing: routeReducer,
-    quilts,
-    isTransitionActive
+    quilts
 });
 
 export default app;
