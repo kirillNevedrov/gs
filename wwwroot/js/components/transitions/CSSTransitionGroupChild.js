@@ -7,7 +7,7 @@
  * of patent rights can be found in the PATENTS file in the same directory.
  *
  * @typechecks
- * @providesModule CSSTransitionGroupChild
+ * @providesModule ReactCSSTransitionGroupChild
  */
 
 'use strict';
@@ -26,8 +26,8 @@ var onlyChild = require('react/lib/onlyChild');
 // does not start and if it doesn't, we just call the end listener immediately.
 var TICK = 17;
 
-var CSSTransitionGroupChild = React.createClass({
-    displayName: 'CSSTransitionGroupChild',
+var ReactCSSTransitionGroupChild = React.createClass({
+    displayName: 'ReactCSSTransitionGroupChild',
 
     propTypes: {
         name: React.PropTypes.oneOfType([React.PropTypes.string, React.PropTypes.shape({
@@ -52,6 +52,8 @@ var CSSTransitionGroupChild = React.createClass({
         appearTimeout: React.PropTypes.number,
         enterTimeout: React.PropTypes.number,
         leaveTimeout: React.PropTypes.number,
+        onAppearStart: React.PropTypes.func,
+        onAppearEnd: React.PropTypes.func,
         onEnterStart: React.PropTypes.func,
         onEnterEnd: React.PropTypes.func,
         onLeaveStart: React.PropTypes.func,
@@ -137,11 +139,48 @@ var CSSTransitionGroupChild = React.createClass({
         });
     },
 
+    componentReset: function(){
+        var node = ReactDOM.findDOMNode(this);
+
+        if (!node) {
+            return;
+        }
+
+        let removeClasses = (animationType) => {
+            var className = this.props.name[animationType] || this.props.name + '-' + animationType;
+            var activeClassName = this.props.name[animationType + 'Active'] || className + '-active';
+
+            CSSCore.removeClass(node, className);
+            CSSCore.removeClass(node, activeClassName);
+        }
+
+        removeClasses('appear');
+        removeClasses('enter');
+        removeClasses('leave');
+
+        if (this.timeout) {
+            clearTimeout(this.timeout);
+        }
+        this.transitionTimeouts.forEach(function (timeout) {
+            clearTimeout(timeout);
+        });
+    },
+
     componentWillAppear: function (done) {
+        if(this.props.onAppearStart){
+            this.props.onAppearStart();
+        }
+
         if (this.props.appear) {
             this.transition('appear', done, this.props.appearTimeout);
         } else {
             done();
+        }
+    },
+
+    componentDidAppear: function(){
+        if(this.props.onAppearEnd){
+            this.props.onAppearEnd();
         }
     },
 
@@ -185,4 +224,4 @@ var CSSTransitionGroupChild = React.createClass({
     }
 });
 
-module.exports = CSSTransitionGroupChild;
+module.exports = ReactCSSTransitionGroupChild;

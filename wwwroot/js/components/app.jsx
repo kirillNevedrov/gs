@@ -2,6 +2,7 @@ import React from 'react';
 import {IntlProvider} from 'react-intl';
 import {connect} from 'react-redux';
 import CSSTransitionGroup from './transitions/CSSTransitionGroup'
+//import ReactCSSTransitionGroup from 'react-addons-css-transition-group'
 
 import CurrentLocaleLink from './currentLocaleLink'
 import Languages from './languages';
@@ -81,10 +82,10 @@ export class App extends React.Component {
                             transitionAppearTimeout={500}
                             transitionEnterTimeout={500}
                             transitionLeaveTimeout={500}
-                            onEnterStart = {onTransitionStart}
-                            onEnterEnd = {onTransitionEnd}
-                            onLeaveStart = {onTransitionStart}
-                            onLeaveEnd = {onTransitionEnd}
+                            //onEnterStart = {onTransitionStart}
+                            //onEnterEnd = {onTransitionEnd}
+                            //onLeaveStart = {onTransitionStart}
+                            //onLeaveEnd = {onTransitionEnd}
                         >
                             {React.cloneElement(this.props.children, {
                                 key: this.props.location.pathname
