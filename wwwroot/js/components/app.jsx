@@ -81,10 +81,10 @@ export class App extends React.Component {
                             transitionAppearTimeout={500}
                             transitionEnterTimeout={500}
                             transitionLeaveTimeout={500}
-                            onEnterStart = {()=>{console.log('enter start');onTransitionStart();}}
-                            onEnterEnd = {()=>{console.log('enter end');onTransitionEnd();}}
-                            onLeaveStart = {()=>{console.log('leave start');onTransitionStart();}}
-                            onLeaveEnd = {()=>{console.log('leave end');onTransitionEnd();}}
+                            onEnterStart = {onTransitionStart}
+                            onEnterEnd = {onTransitionEnd}
+                            onLeaveStart = {onTransitionStart}
+                            onLeaveEnd = {onTransitionEnd}
                         >
                             {React.cloneElement(this.props.children, {
                                 key: this.props.location.pathname

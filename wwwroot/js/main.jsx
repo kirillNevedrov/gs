@@ -17,6 +17,14 @@ import Quilts from './components/quilts';
 const reduxRouterMiddleware = syncHistory(browserHistory)
 const createStoreWithMiddleware = applyMiddleware(reduxRouterMiddleware)(createStore)
 
+browserHistory.listenBefore(() => {
+    var state = store.getState();
+    if(state.isTransitionActive)
+    {
+        return false;
+    }
+});
+
 const store = createStoreWithMiddleware(reducers)
 
 ReactDOM.render(

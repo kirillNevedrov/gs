@@ -8,9 +8,10 @@ class CurrentLocaleLink extends React.Component {
         const {to, children, intl: {locale}, isTransitionActive} = this.props;
 
         return (
-            <Link
-                to={locale ? `/${locale}${to}` : to}
-                onClick={(e)=>{if(isTransitionActive){e.preventDefault();}}} >{children}</Link>
+            //<Link
+            //    to={locale ? `/${locale}${to}` : to}
+            //    onClick={(e)=>{if(isTransitionActive){e.preventDefault();}}} >{children}</Link>
+            <Link to={locale ? `/${locale}${to}` : to}>{children}</Link>
         );
     }
 }
