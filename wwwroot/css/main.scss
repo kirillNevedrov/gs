@@ -40,6 +40,7 @@
 }*/
 
 .example-leave {
+  opacity: 1;
   -webkit-transform: translateX(0);
   transform: translateX(0);
 
@@ -48,14 +49,16 @@
 }
 
 .example-leave.example-leave-active{
+  opacity: 0;
   -webkit-transform: translateX(-100%);
   transform: translateX(-100%);
 
-  -webkit-transition: -webkit-transform 0.5s;
-  transition: transform 0.5s;
+  -webkit-transition: -webkit-transform 0.5s ease-in, opacity 0.5s ease-in;
+  transition: transform 0.5s ease-in, opacity 0.5s ease-in;
 }
 
 .example-enter {
+  opacity: 0;
   -webkit-transform: translateX(100%);
   transform: translateX(100%);
   //-webkit-animation: moveFromRight 5s ease both;
@@ -63,14 +66,16 @@
 }
 
 .example-enter.example-enter-active{
+  opacity: 1;
   -webkit-transform: translateX(0);
   transform: translateX(0);
 
-  -webkit-transition: -webkit-transform 0.5s;
-  transition: transform 0.5s;
+  -webkit-transition: -webkit-transform 0.5s ease-in, opacity 0.5s ease-in;
+  transition: transform 0.5s ease-in, opacity 0.5s ease-in;
 }
 
 .example-appear {
+  opacity: 0;
   -webkit-transform: translateX(100%);
   transform: translateX(100%);
   //-webkit-animation: moveFromRight 5s ease both;
@@ -78,11 +83,12 @@
 }
 
 .example-appear.example-appear-active{
+  opacity: 1;
   -webkit-transform: translateX(0);
   transform: translateX(0);
 
-  -webkit-transition: -webkit-transform 0.5s;
-  transition: transform 0.5s;
+  -webkit-transition: -webkit-transform 0.5s ease-in, opacity 0.5s ease-in;
+  transition: transform 0.5s ease-in, opacity 0.5s ease-in;
 }
 
 main{
