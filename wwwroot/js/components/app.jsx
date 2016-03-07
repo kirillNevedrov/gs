@@ -9,6 +9,8 @@ import Localized from './localized';
 import LocalizedBinded from './localizedBinded';
 import {getLocale, getLocaleOrDefault} from 'js/utils/utils';
 import {activateTransition, deactivateTransition} from 'js/actionCreators/actionCreators';
+import RoutingMotion from './routingMotion';
+
 
 const ruStrings = {
     'description': 'Гуд сториес это огонь!'
@@ -32,20 +34,21 @@ export class App extends React.Component {
     constructor() {
         super();
         this.state = {
-            test: '123'
+            test: '123',
+            stiffness: 1
         };
     }
 
     //shouldComponentUpdate(nextProps, nextState) {
     //    return false;
     //}
+
+
     render() {
         let {location, onTransitionStart, onTransitionEnd} = this.props;
 
         let locale = getLocale(location);
         let localeOrDefault = getLocaleOrDefault(locale);
-
-
 
         return (
             //<div>
@@ -62,6 +65,34 @@ export class App extends React.Component {
             //        <div className="grid-item">10</div>
             //    </section>
             //</div>
+            //<div>
+            //    <button onClick={()=>{this.setState({stiffness: this.state.stiffness + 1})}}>
+            //        increase
+            //    </button>
+            //    <button onClick={()=>{this.setState({stiffness: Math.max(this.state.stiffness - 1, 0)})}}>
+            //        decrease
+            //    </button>
+            //
+            //    <Motion defaultStyle={{x: 0}} style={{x: spring(1000, {stiffness: this.state.stiffness, damping: 26})}}>
+            //        {interpolatingStyle => <div
+            //            style={{transform: `translateX(${interpolatingStyle.x}%)`, backgroundColor: '#666', width: '100px', height: '100px'}}/>}
+            //    </Motion>
+            //</div>
+  //          <StaggeredMotion
+  //              defaultStyles={[{h: 0}, {h: 0}, {h: 0}]}
+  //              styles={prevInterpolatedStyles => prevInterpolatedStyles.map((_, i) => {
+  //  return i === 0
+  //    ? {h: spring(100,{stiffness: 10})}
+  //    : {h: spring(prevInterpolatedStyles[i - 1].h,{stiffness: 10})}
+  //})}>
+  //              {interpolatingStyles =>
+  //              <div>
+  //                  {interpolatingStyles.map((style, i) =>
+  //                  <div key={i} style={{border: '1px solid', backgroundColor: '#555', height: style.h}} />)
+  //                      }
+  //              </div>
+  //                  }
+  //          </StaggeredMotion>
             <IntlProvider key={localeOrDefault} locale={locale} messages={getMessages(localeOrDefault)}>
                 <div>
                     {location.pathname}
@@ -74,18 +105,9 @@ export class App extends React.Component {
                         </ul>
                     </nav>
                     <main>
-                        <CSSTransitionGroup
-                            component="div"
-                            transitionName="example"
-                            transitionAppear={true}
-                            transitionAppearTimeout={500}
-                            transitionEnterTimeout={500}
-                            transitionLeaveTimeout={500}
-                        >
-                            {React.cloneElement(this.props.children, {
-                                key: this.props.location.pathname
-                                })}
-                        </CSSTransitionGroup>
+                        <RoutingMotion location={this.props.location}>
+                            {this.props.children}
+                        </RoutingMotion>
                     </main>
                     <footer>
                         <div className="column">

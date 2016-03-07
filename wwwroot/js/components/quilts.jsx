@@ -1,8 +1,8 @@
 import React from 'react';
 
-let Quilts = () => {
+let Quilts = (props) => {
     return (
-        <div>
+        <div style={props.style}>
             <section className="grid-one">
                 <div className="grid-item"></div>
                 <div className="grid-item"></div>
