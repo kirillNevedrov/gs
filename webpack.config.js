@@ -27,7 +27,7 @@ module.exports = {
                 }
             },
             {
-                test:   /\.scss$/,
+                test:   /\.css$/,
                 loader: "style-loader!css-loader!postcss-loader"
             },
             {test: /\.(woff|woff2)$/, loader: "url?limit=10000&minetype=application/font-woff"},

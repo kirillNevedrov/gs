@@ -1,4 +1,4 @@
-import styles from 'css/main.scss';
+import styles from 'css/main.css';
 
 import { createStore, applyMiddleware } from 'redux'
 import React from 'react';

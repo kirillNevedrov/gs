@@ -49,6 +49,17 @@ export class App extends React.Component {
         let localeOrDefault = getLocaleOrDefault(locale);
 
         return (
+            <IntlProvider key={localeOrDefault} locale={locale} messages={getMessages(localeOrDefault)}>
+                <div className="body">
+                    <header>header</header>
+                    <div className="content">
+                        <main className="main">content</main>
+                        <nav className="nav">nav</nav>
+                        <aside className="ads">ads</aside>
+                    </div>
+                    <footer>footer</footer>
+                </div>
+            </IntlProvider>
             //<div>
             //    <section className="grid-one">
             //        <div className="grid-item">1</div>
@@ -91,33 +102,33 @@ export class App extends React.Component {
   //              </div>
   //                  }
   //          </StaggeredMotion>
-            <IntlProvider key={localeOrDefault} locale={locale} messages={getMessages(localeOrDefault)}>
-                <div>
-                    {location.pathname}
-                    <header>Good Stories</header>
-                    <nav>
-                        <ul>
-                            <li><CurrentLocaleLink to="/">Главная</CurrentLocaleLink></li>
-                            <li><CurrentLocaleLink to="/quilts">Одеяла</CurrentLocaleLink></li>
-                            <li><CurrentLocaleLink to="/blog">Блог</CurrentLocaleLink></li>
-                        </ul>
-                    </nav>
-                    <main>
-                        <RoutingMotion location={this.props.location}>
-                            {this.props.children}
-                        </RoutingMotion>
-                    </main>
-                    <footer>
-                        <div className="column">
-                            <Localized />
-                            <LocalizedBinded />
-                        </div>
-                        <div className="column">
-                            <Languages />
-                        </div>
-                    </footer>
-                </div>
-            </IntlProvider>
+  //          <IntlProvider key={localeOrDefault} locale={locale} messages={getMessages(localeOrDefault)}>
+  //              <div>
+  //                  {location.pathname}
+  //                  <header>Good Stories</header>
+  //                  <nav>
+  //                      <ul>
+  //                          <li><CurrentLocaleLink to="/">Главная</CurrentLocaleLink></li>
+  //                          <li><CurrentLocaleLink to="/quilts">Одеяла</CurrentLocaleLink></li>
+  //                          <li><CurrentLocaleLink to="/blog">Блог</CurrentLocaleLink></li>
+  //                      </ul>
+  //                  </nav>
+  //                  <main>
+  //                      <RoutingMotion location={this.props.location}>
+  //                          {this.props.children}
+  //                      </RoutingMotion>
+  //                  </main>
+  //                  <footer>
+  //                      <div className="column">
+  //                          <Localized />
+  //                          <LocalizedBinded />
+  //                      </div>
+  //                      <div className="column">
+  //                          <Languages />
+  //                      </div>
+  //                  </footer>
+  //              </div>
+  //          </IntlProvider>
         );
     }
 }
