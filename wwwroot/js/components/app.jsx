@@ -1,7 +1,6 @@
 import React from 'react';
 import {IntlProvider} from 'react-intl';
 import {connect} from 'react-redux';
-import CSSTransitionGroup from './transitions/CSSTransitionGroup'
 
 import CurrentLocaleLink from './currentLocaleLink'
 import Languages from './languages';
@@ -10,7 +9,6 @@ import LocalizedBinded from './localizedBinded';
 import {getLocale, getLocaleOrDefault} from 'js/utils/utils';
 import {activateTransition, deactivateTransition} from 'js/actionCreators/actionCreators';
 import RoutingMotion from './routingMotion';
-
 
 const ruStrings = {
     'description': 'Гуд сториес это огонь!'

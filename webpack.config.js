@@ -2,7 +2,6 @@ var path = require("path");
 var autoprefixer = require('autoprefixer');
 var precss = require('precss');
 var cssnext = require('postcss-cssnext');
-var lost = require('lost');
 
 module.exports = {
     entry: "./wwwroot/js/main.jsx",
@@ -39,7 +38,7 @@ module.exports = {
         ]
     },
     postcss: function () {
-        return [autoprefixer, precss, lost];
+        return [precss, autoprefixer, cssnext];
     },
     resolve: {
         root: path.resolve('./wwwroot'),

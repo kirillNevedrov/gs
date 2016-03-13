@@ -1,7 +1,5 @@
 import React from 'react';
 import {connect} from 'react-redux';
-import RaisedButton from 'material-ui/lib/raised-button';
-import TextField from 'material-ui/lib/text-field';
 import {addQuilt} from 'js/actionCreators/actionCreators';
 
 class AddQuilt extends React.Component {
@@ -26,14 +24,16 @@ class AddQuilt extends React.Component {
     render() {
         return (
             <div>
-                <TextField
-                    hintText="ToDo Task"
+                <input
+                    type="text"
                     value={this.state.textFieldValue}
                     onChange={e => this._handleTextFieldChange(e)}
-                /><br/>
-                <RaisedButton
-                    label="Add Quilt"
-                    onClick={e => this._handleClick(e)}/>
+                    placeholder="ToDo Task"
+                />
+                <br/>
+                <button
+                    onClick={e => this._handleClick(e)}
+                >Add Quilt</button>
             </div>
         );
     }
